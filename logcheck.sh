@@ -8,8 +8,8 @@ cd ~/sm10work
 # --stat for printing the file changes
 ./repo forall \
 -p \
--c git log --since="2017-1-1" --until="2017-2-6" \
+-c git log $@ \
 --stat \
 --date=iso  # print excel friendly date format
-) | ./pars.py
+) | $(dirname "$0")/pars.py
 
