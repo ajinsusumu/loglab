@@ -17,6 +17,9 @@ for line in input_stream:
     if (line.startswith('project')):
         project = line.split(' ')[1].strip()
         continue
+    if (line.startswith('commit')):
+        commit = line.split(' ')[1].strip()
+        continue
     if (line.startswith('Author:')):
 #        author = line.split(' ', maxsplit=1)[1].strip()
 #        author = re.search(r'[\w\.-]+@[\w\.-]+', line).group(0)
@@ -32,6 +35,6 @@ for line in input_stream:
         if (',' in line): continue
         if not author: continue
         filename, change = [x.strip() for x in line.split('|', maxsplit=1)]
-        out += '\t'.join([date, author, project, filename, change]) + '\n'
-print("date\tauthor\tproject\tfile\tchange")
+        out += '\t'.join([date, commit, author, project, filename, change]) + '\n'
+print("date\tcommit\tauthor\tproject\tfile\tchange")
 print(out)
